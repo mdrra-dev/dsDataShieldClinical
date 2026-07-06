@@ -20,7 +20,8 @@ check_categoricalDS <- function(df) {
     csDMARD2 = c(1, 2, 3, 4, 5, NA),
     csDMARD3 = c(1, 2, 3, 4, 5, NA),
     bDMARD = c(1, 2, 3, 4, 5),
-    tsDMARD = c(1, 2, 3, 4)
+    tsDMARD = c(1, 2, 3, 4),
+    DT2 = c(0,1,NA),
   )
   invalid_cols <- c()
 
