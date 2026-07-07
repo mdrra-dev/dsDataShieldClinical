@@ -10,6 +10,11 @@
 
 check_categoricalDS <- function(df) {
 
+  normalize_missing <- function(x) {
+    x[x == "" & !is.na(x)] <- NA
+    x
+  }
+
   valid_values <- list(
     Sex = c(0, 1, NA),
     RF_positivity = c(0, 1, NA),
@@ -19,20 +24,18 @@ check_categoricalDS <- function(df) {
     csDMARD1 = c(1, 2, 3, 4, 5, NA),
     csDMARD2 = c(1, 2, 3, 4, 5, NA),
     csDMARD3 = c(1, 2, 3, 4, 5, NA),
-    bDMARD = c(1, 2, 3, 4, 5),
+    bDMARD = c(1, 2, 3, 4),
     tsDMARD = c(1, 2, 3, 4),
-    DT2 = c(0,1,NA),
+    D2T = c(0, 1, NA)
   )
-  invalid_cols <- c()
 
+  invalid_cols <- c()
   for (col_name in names(valid_values)) {
     if (col_name %in% names(df)) {
-      has_invalid <- any(!df[[col_name]] %in% valid_values[[col_name]], na.rm = FALSE)
-      if (has_invalid) {
-        invalid_cols <- c(invalid_cols, col_name)
-      }
+      x <- normalize_missing(df[[col_name]])
+      has_invalid <- any(!x %in% valid_values[[col_name]])
+      if (has_invalid) invalid_cols <- c(invalid_cols, col_name)
     }
   }
-
   return(invalid_cols)
 }
