@@ -18,4 +18,3 @@ Verify that selected numeric variables in a data frame
 fall within predefined ranges and satisfy integer constraints where required.
 Also checks the format of the patient identifier (pat_ID), if present.
 }
-
