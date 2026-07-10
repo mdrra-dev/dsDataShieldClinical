@@ -1,1 +1,1 @@
-# DataShieldClinical
+# DataClinicalHarmonization
